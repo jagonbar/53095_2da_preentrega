@@ -4,7 +4,8 @@ const cartCollection = 'cart'
 
 const productQuantitySchema = new Schema({
     product: {
-        type: Number,
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
         required: true
     },
     quantity: {
@@ -14,7 +15,7 @@ const productQuantitySchema = new Schema({
 });
 
 const cartSchema = new Schema({
-    products: { type: [productQuantitySchema] },
+    products: [{ type: productQuantitySchema }],
 })
 
 const cartModel = model(cartCollection, cartSchema)
