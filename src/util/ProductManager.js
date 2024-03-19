@@ -1,33 +1,9 @@
-// const fs = require('fs');
-import fs from 'fs'
+import {productModel} from '../models/product.model.js'
 
 export default class ProductManager {
 
-    constructor(path) {
-        this.products = []
-        this.path = path;
-    }
-    async readFile() {
-        let products = await fs.promises.readFile(this.path, 'utf-8') ?? false;
-        if (!products) return false;
-        products = JSON.parse(products);
-        this.products = products.map((p) => {
-            return { ...p, toString: () => (`id:${p.id} , title:${p.title} , description:${p.description} , price:${p.price} , thumbnail:${JSON.stringify(p.thumbnail)} , code:${p.code} , stock:${p.stock}, status:${p.status}, category:${p.category}`) }
-        });
-        return this.products
-    }
-    async writeFile() {
-
-
-        // let debug= this.products
-        // console.log({ debug })
-
-        // const data = JSON.stringify(this.products, replacer);
-        const data = JSON.stringify(this.products);
-        // console.log({data})
-        await fs.promises.writeFile(this.path, data)
-    }
-    
+    constructor() {        
+    }        
     /**
     * Agrega un nuevo producto
     *  método addProduct el cual debe recibir un objeto 
@@ -64,13 +40,11 @@ export default class ProductManager {
             category`);
             return false;
         }
-        let products = await this.readFile()
-        this.products = products ?? [];
-
-        const idIncremental = this.products.length + 1
+        
+        // const idIncremental = this.products.length + 1
         const thumbnails = thumbnail ? thumbnail : []
         const newProduct = {
-            id: idIncremental,
+            // id: idIncremental,
             title,
             description,
             price,
@@ -80,26 +54,40 @@ export default class ProductManager {
             status: true,
             category
         }
-        this.products.push(newProduct);
-
-        await this.writeFile()
-        return idIncremental;
+        const product = await productModel.create(newProduct)
+        return product
     }
-    async getProducts() {
-        return await this.readFile() ?? []
+    async getProducts(query, page, limit, sortOrder) {
+        
+        const countElementos = await YourModel.countDocuments(query);
+        
+        const offset = (page - 1) * limit
+
+        const totalPages = countElementos>0 ? Math.ceil(countElementos / limit) : 0
+                           console.log("countElementos:", countElementos);
+
+        const elementos = (countElementos>0)? 
+            await productModel
+                .find(query)
+                .sort({ title: sortOrder })
+                .skip(offset)
+                .limit(limit)
+            : []
+
+        return {
+            countElementos,
+            totalPages,
+            elementos
+        }
     }
     async getProductById(id) {
         console.log('getProductById buscando id:', id)
-        let products = await this.readFile()
-        if (!products) { console.log("Not found1"); return false; }
-        console.log('getProductById')
         
-        this.products = products
-        const product = this.products.find(product => parseInt(product.id) === parseInt(id) || product.id === id)
-        if (!product) {
-            console.log("Not found2");
-            return false;
-        }
+        const product = await productModel.findOne({_id: id})
+
+        if (!product) { console.log("Not found1"); return false; }
+        
+                
         return product
     }
 
@@ -134,11 +122,8 @@ export default class ProductManager {
         if (category) {
             product.category = category
         }
-        this.products = this.products.filter(product => product.id !== id)
-        this.products.push(product)
-
-        await this.writeFile()
-        return true
+        const result = await productModel.updateOne({_id: id}, {$set: product})
+        return (result.ok==1)
     }
     //07 Debe tener un método deleteProduct, el cual debe recibir un id y debe eliminar el producto que tenga ese id en el Archivo
     async deleteProduct(id) {
@@ -149,10 +134,8 @@ export default class ProductManager {
             return false;
         }
         
-        this.products = this.products.filter(product => parseInt(product.id) !== parseInt(id))
+        const result = await productModel.deleteOne({_id: id})
+        return result.ok==1
         
-        await this.writeFile()
-        console.log(`Producto id ${product.id} borrado. `);
-        return true;
     }
 }

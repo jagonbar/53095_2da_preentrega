@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { cartModel } from "../models/cart.model.js";
 
 /**
  * Clase para gestionar carritos
@@ -9,45 +9,21 @@ export default class CartManager {
      * Constructor de la clase CartManager
      * @param {string} path - Ruta del archivo donde se almacenarán los carritos
      */
-    constructor(path) {
-        this.carts = []
-        this.path = path
-    }
-
-    /**
-     * Lee el archivo de carritos desde el sistema de archivos
-     * @returns {Array} Retorna un array de carritos si el archivo existe, sino false
-     */
-    async readFile() {
-        let carts = await fs.promises.readFile(this.path, 'utf-8') ?? false;
-        if (!carts) return false;
-        carts = JSON.parse(carts);
-        this.carts = carts
-        return this.carts
-    }
-
-    /**
-     * Escribe el array de carritos en el sistema de archivos
-     */
-    async writeFile() {
-        const data = JSON.stringify(this.carts);
-        await fs.promises.writeFile(this.path, data)
-    }   
+    constructor() {
+        
+    } 
     /**
      * Crea un nuevo carrito y lo añade al array de carritos
      * @returns {Number} Retorna el ID del carrito creado
      */
     async createCart() {
-        let carts = await this.readFile()
-        this.carts = carts ?? [];
-        const idIncremental = this.carts.length + 1
         const newCart = {
-            id: idIncremental,
             products: []
         }
-        this.carts.push(newCart)
-        await this.writeFile()
-        return idIncremental
+        
+        const cart = await cartModel.create(newCart)
+        
+        return cart
     }
 
     /**
@@ -56,11 +32,14 @@ export default class CartManager {
      * @returns {Object} Retorna el carrito si se encuentra, sino undefined
      */
     async getCartById(cid) {
-        await this.readFile()
-        const cart = this.carts.find(cart => parseInt(cart.id) === parseInt(cid))
         
-        if(!cart){ return false}
         
+        console.log('getCartById buscando id:', id)
+        
+        const cart = await cartModel.findOne({_id: id})
+
+        if (!cart) { console.log("Not found1"); return false; }
+                        
         return cart
     }
 

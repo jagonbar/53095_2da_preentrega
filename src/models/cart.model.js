@@ -1,4 +1,4 @@
-import mongoose from mongoose
+import { Schema,model } from "mongoose"
 
 const cartCollection = 'cart'
 
@@ -13,10 +13,10 @@ const productQuantitySchema = new Schema({
     }
 });
 
-const cartSchema = new mongoose.Schema({
-    products: { type: [productQuantitySchema], required: true },
+const cartSchema = new Schema({
+    products: { type: [productQuantitySchema] },
 })
 
-const cartModel = mongoose.model(cartCollection, cartSchema)
+const cartModel = model(cartCollection, cartSchema)
 
-export {default as cartModel,productQuantitySchema,cartSchema}
+export {cartModel, productQuantitySchema, cartSchema}

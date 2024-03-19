@@ -10,23 +10,74 @@ const productsRouter = Router();
 
 productsRouter.get('/', async (req, res) => {
 
-    try {
-        // console.log("--CWD--",process.cwd())
-        // console.log("--data--", dataFileProduct )
-        let response = await pm.getProducts();
-        // console.log("productos:", { response });
-        if (req.query.limit) {
-            const limit = req.query.limit;
-            if (!Validador.validarNumero(limit)) return res.status(400).send("El limite debe ser un numero");
-            if (!Validador.validarNumero(limit, 1)) return res.status(400).send("El limite debe partir desde 1");
-            if (!Validador.validarNumeroEntero(limit)) return res.status(400).send("El limite debe ser número entero");
-
-            response = response.slice(0, limit);
+    const retornarPayload =
+        (   status
+            , payload
+            , totalPages
+            , page
+            , url
+            , limit
+            , sort
+            , query)=>{
+        url += `?limit=${limit}&sort=${sort}&query=${query}`
+        const hasPrevPage = (page>1)
+        const hasNextPage = (page<totalPages)
+        
+        const retorno= {
+            status      //success/error
+            ,payload    // Resultado de los productos solicitados
+            ,totalPages // Total de páginas
+            ,prevPage   :hasPrevPage?page-1:null // Página anterior
+            ,nextPage   :hasNextPage?page+1:null // Página siguiente
+            ,page        // Página actual
+            ,hasPrevPage // Indicador para saber si la página previa existe
+            ,hasNextPage // Indicador para saber si la página siguiente existe.
+            ,prevLink   :hasPrevPage ?`${url}&page=${page-1}`:null // Link directo a la página previa (null si hasPrevPage=false)
+            ,nextLink   :hasNextPage ?`${url}&page=${page+1}`:null // Link directo a la página siguiente (null si hasNextPage=false)
         }
-        res.status(200).send(response);
+        console.log({retorno})
+        return retorno        
+    }
+
+    try {
+        const url = `${req.protocol}://${req.get('host')}/${req.url}`;
+        
+        const limit   = req.query.limit ?? 10  
+        const page    = req.query.page  ?? 1
+        const sort    = req.query.sort  ?? 'asc'
+        const query   = req.query.query ?? ''
+
+        let {
+            countElementos,
+            totalPages,
+            payload
+        } = await pm.getProducts(query, page, limit, sort);
+                
+        res.status(200).send(
+            retornarPayload(   
+                "success"
+                , payload
+                , totalPages
+                , page
+                , url
+                , limit
+                , sort
+                , query));
     } catch (error) {
         console.error(error);
-        res.status(500).send("error_al_listar_productos");
+        
+        res.status(500).send(
+            retornarPayload(   
+                "error"
+                , []
+                , 0
+                , page
+                , url
+                , limit
+                , sort
+                , query)
+        );
+
     }
 })
 /*************************************************************************************************** */
@@ -78,7 +129,7 @@ productsRouter.post('/', async (req, res) => {
             , thumbnails 
         } = req.body
 
-        const idProduct = await pm.addProduct(
+        const product = await pm.addProduct(
             title
             , description
             , price
@@ -87,8 +138,8 @@ productsRouter.post('/', async (req, res) => {
             , stock            
             , category
         )
-        console.log("idProduct:", idProduct)
-        res.status(200).send(idProduct.toString())
+        console.log("product:", product)
+        res.status(200).send(product)
     }
     catch (error) {
         console.error(error);
