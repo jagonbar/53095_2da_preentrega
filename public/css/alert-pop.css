@@ -1,0 +1,26 @@
+.alert-pop {
+    position: fixed;
+    width: 500px;
+    bottom: 0px;
+    right: 0px;
+    margin: 0px;
+}
+.alert-pop--content {
+    padding: 1rem;
+}
+
+@keyframes slideUpDown {
+    0% {
+        transform: translateY(100%);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.slide-up-down {
+    animation: slideUpDown 4s forwards;
+}

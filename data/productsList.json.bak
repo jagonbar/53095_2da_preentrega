@@ -1,0 +1,199 @@
+[
+    {
+        "id": 1,
+        "title": "Mario 3D",
+        "description": "¡Araña y trepa a través de docenas de coloridos niveles! Multiplica la diversión al formar un equipo o compitiendo con tus amigos mediante el juego local* o en línea** para alcanzar el objetivo de cada etapa. ¡Trabajen juntos para explorar y descubrir los objetos coleccionables, o compitan por la corona obteniendo la puntuación más alta, creando así un frenesí amistoso! Mario y sus amigos pueden utilizar una variedad de mejoras, como la supercampana que otorga habilidades felinas como trepar y arañar. ¡Aplica las mejoras, completa los niveles y llévate la corona!",
+        "price": 69990,
+        "thumbnail": "\/multimedia\/img\/game_mario.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 2,
+        "title": "Metal Gear",
+        "description": "Después de nueve años de los eventos de MGSV: Ground Zeroes y la caída de la Mother Base, Snake, también conocido como Big Boss, despierta de un coma de casi una década.",
+        "price": 19990,
+        "thumbnail": "\/multimedia\/img\/game_metalgear.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 3,
+        "title": "Tekken 7",
+        "description": "Disfruta del épico final del clan Mishima y descubre los motivos detrás de cada uno de los pasos de esta batalla interminable. TEKKEN 7, creado con Unreal Engine 4, ofrece espectaculares batallas con cinemáticas narrativas e intensos duelos para disfrutar con amigos y rivales gracias a las nuevas mecánicas de lucha.",
+        "price": 59990,
+        "thumbnail": "\/multimedia\/img\/game_tekken7.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 4,
+        "title": "Forza Horizon 5",
+        "description": "¡Tu aventura Horizon por excelencia te espera! Explora los dinámicos paisajes de mundo abierto y en constante evolución de México con una acción de conducción ilimitada y divertida en cientos de los mejores autos del mundo.",
+        "price": 39990,
+        "thumbnail": "\/multimedia\/img\/game_forza.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 5,
+        "title": "Hitman: Definitive Edition",
+        "description": "Hitman: Definitive Edition incluirá nuevos skins para el agente 47, inspirados en varios títulos clásicos de IO Interactive (Freedom Fighters, Kane & Lynch y Mini Ninjas), para celebrar el 20 aniversario del estudio danés. Además, incluirá todos los contenidos y actualizaciones ya publicadas de la primera temporada de Hitman.",
+        "price": 19990,
+        "thumbnail": "\/multimedia\/img\/game_hitman.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 6,
+        "title": "Street Fighter 6",
+        "description": "Con el poder del exclusivo motor de Capcom, RE ENGINE, la experiencia de Street Fighter 6 abarca tres modos de juego diferentes: Fighting Ground, World Tour y Battle Hub. Tu camino para convertirte en un luchador mundial comienza aquí. Tu momento. Tu lucha",
+        "price": 59990,
+        "thumbnail": "\/multimedia\/img\/game_street-fighter-6.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 7,
+        "title": "Grand Theft Auto V",
+        "description": "Un ladrón de bancos retirado y un psicópata aterrador se ven involucrados con lo peor y más desquiciado del mundo criminal, del gobierno de los EE. UU. y de la industria del espectáculo, tendrán que llevar a cabo una serie de peligrosos golpes para sobrevivir en una ciudad implacable en la que no pueden confiar en nadie; mucho menos los unos en los otros.",
+        "price": 29990,
+        "thumbnail": "\/multimedia\/img\/game_gtav.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 8,
+        "title": "Mortal Kombat 11",
+        "description": "Mortal Kombat está de vuelta mejor que nunca con la siguiente evolución de la emblemática franquicia. Con las nuevas variaciones de personaje tendrás un control sin precedentes para personalizar a tus luchadores y hacerlos únicos. El nuevo motor gráfico resalta cada uno de los momentos más sangrientos para ponerte tan cerca de la pelea que casi podrás sentirla.",
+        "price": 49990,
+        "thumbnail": "\/multimedia\/img\/game_mk11.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 9,
+        "title": "Starfield",
+        "description": "Corre el año 2330. La humanidad se ha aventurado más allá de nuestro sistema solar para asentarse en planetas nuevos y vivir como un pueblo espacial. Te unirás a Constelación, el último grupo de exploradores espaciales en busca de raros artefactos por toda la galaxia, y viajaréis por la vasta extensión del espacio en el juego más grande y ambicioso de Bethesda Game Studios.",
+        "price": 69990,
+        "thumbnail": "\/multimedia\/img\/game_Starfield.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 10,
+        "title": "Halo Infinite",
+        "description": "El famoso modo multijugador de Halo regresa, reinventado y gratuito! Las actualizaciones de cada temporada hacen que la experiencia evolucione con eventos únicos, nuevos modos y mapas, y contenido centrado en la comunidad.",
+        "price": 89990,
+        "thumbnail": "\/multimedia\/img\/game_halo.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 11,
+        "title": "Dead by Daylight",
+        "description": "Esta edición de Dead by Daylight te permite acceder a una lista de 7 asesinos (el Trampero, el Pueblerino, el Espectro, la Enfermera, la Bruja, la Cazadora y el Doctor) y 9 sobrevivientes (Meg Thomas, Claudette Morel, Jake Park, Dwight Fairfield, Ace Visconti, Nea Karlsson, Bill Overbeck, Feng Min y David King). Además incluye dos accesorios de objetos cosméticos repleto de atuendos para diversos personajes.",
+        "price": 9990,
+        "thumbnail": "\/multimedia\/img\/game_dead.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 12,
+        "title": "eFootball 2023",
+        "description": "Ya está aquí una nueva era del fútbol virtual: 'PES' evoluciona para convertirse en 'eFootball™'. ¡Disfruta ya de un nuevo capítulo en los juegos de fútbol con 'eFootball™'!",
+        "price": 19990,
+        "thumbnail": "\/multimedia\/img\/game_efootball.jpg",
+        "code": "games",
+        "stock": 99
+    },
+    {
+        "id": 13,
+        "title": "Consola Nintendo Switch Lite Turquoise + Animal Crossing",
+        "description": "Crea tu propia isla paradisíaca mientras viajas o en tu rincón especial con esta consola Nintendo Switch™ Lite con temática Aloha de Timmy y Tommy. El sistema presenta un sereno color turquesa, un patrón de hojas blancas en la parte posterior y un lindo diseño de hojas en el frente, inspirado en la serie Animal Crossing.",
+        "price": 194990,
+        "thumbnail": "\/multimedia\/img\/console_switch_turquesa.jpg",
+        "code": "console",
+        "stock": 99
+    },
+    {
+        "id": 14,
+        "title": "Consola Nintendo Switch V2 + Mario Kart 8 Deluxe",
+        "description": "Este paquete incluye todo lo que necesitas para comenzar tus aventuras de Super Mario™, incluyendo una consola Nintendo Switch™ con controles Joy-Con™ rojo neón y azul neón. Además, disfruta de un valor añadido* de USD 68.00 gracias a un código de descarga para el juego Mario Kart™ 8 Deluxe y una suscripción individual por 3 meses a Nintendo Switch Online. Puedes iniciar competencias multijugador en cuanto abras la caja; solo comparte un control Joy-Con con un amigo para jugar juntos en la misma consola. O adquiere más controles (se venden por separado) y diviértete hasta con 3 jugadores más.",
+        "thumbnail": "\/multimedia\/img\/console_nintendo_switch_v2_mario_kart_8_deluxe.jpg",
+        "code": "console",
+        "stock": 99
+    },
+    {
+        "id": 15,
+        "title": "Consola Xbox S + Game pass 3 Meses",
+        "description": "Disfruta del rendimiento y velocidad de la nueva generación. Aprovecha al máximo cada minuto de juego con Quick Resume, tiempos de carga ultrarrápidos y jugabilidad de hasta 120 FPS, todo con tecnología Xbox Velocity Architecture.* Disfruta de los juegos digitales de cuatro generaciones de Xbox, con cientos de títulos optimizados que se ven y se juegan mejor que nunca. Añade Xbox Game Pass Ultimate (la suscripción se vende por separado) para jugar nuevos juegos desde el día uno. Además, disfruta de cientos de juegos de alta calidad, como Minecraft, Forza Horizon 5 y Halo Infinite, con amigos en la consola, PC y en la nube. Con juegos añadidos constantemente, siempre hay algo nuevo para jugar.",
+        "price": 304990,
+        "thumbnail": "\/multimedia\/img\/console_xbox_s_game_pass_3_meses.jpg",
+        "code": "console",
+        "stock": 99
+    },
+    {
+        "id": 16,
+        "title": "Consola Playstation 4 (PS4) 1TB+God of War Ragnarok",
+        "description": "Desde Santa Monica Studio llega la secuela del aclamado por la crítica God of War (2018). Fimbulvetr ya está en camino. Kratos y Atreus deben viajar a cada uno de los nueve reinos en búsqueda de respuestas, mientras que las fuerzas asgardianas se preparan para una batalla profetizada que terminará con el mundo. En el camino explorarán paisajes increíbles y míticos, y se enfrentarán a aterradores enemigos en la forma de dioses nórdicos y monstruos. La amenaza del Ragnarök cada vez está más cerca. Kratos y Atreus deben elegir entre su propia seguridad y la seguridad de los reinos.",
+        "price": 367390,
+        "thumbnail": "\/multimedia\/img\/console_god_of_war_ragnarok.jpg",
+        "code": "console",
+        "stock": 99
+    },
+    {
+        "id": 17,
+        "title": "Consola PS5 Horizon Forbidden West",
+        "description": "La tierra se muere. Las rugientes tormentas y una desolación imparable causan estragos entre lo que queda de la humanidad, unas cuantas tribus dispersas, mientras nuevas y temibles máquinas merodean por sus fronteras. La vida en la Tierra se enfrenta a una nueva extinción y nadie sabe por qué. Solo Aloy es capaz de descubrir los secretos que hay detrás de estas amenazas, y restablecer el orden y el equilibrio en el mundo. Por el camino, se reunirá con viejos amigos, forjará alianzas con nuevas facciones en guerra y descubrirá la herencia de un antiguo pasado, mientras que intenta permanecer un paso por delante de un nuevo y aparentemente invencible enemigo.",
+        "price": 649990,
+        "thumbnail": "\/multimedia\/img\/console_ps5_horizon_forbidden_west.jpg",
+        "code": "console",
+        "stock": 99
+    },
+    {
+        "id": 18,
+        "title": "Teclado Mecánico Corsair K60 RGB Pro, Switch Cherry MX Low Profile Speed, Negro\n",
+        "description": "Teclado Mecánico Corsair K60 RGB Pro, Switch Cherry MX Low Profile Speed, Negro\nProgramable con el software CORSAIR iCUE\nControl de iluminación RGB viva y dinámica, con una\nsofisticada programación de macros y la posibilidad de\nsincronizar toda la iluminación del sistema, gracias a su\ncompatibilidad con periféricos, refrigeradores, ventiladores\ny otros productos de CORSAIR. Disfrute de un nivel de\ninmersión sin precedentes al jugar a juegos con integración\nde iCUE, puesto que la iluminación RGB reacciona\ndinámicamente ante las acciones y eventos del juego en\ntiempo real",
+        "price": 64990,
+        "thumbnail": "\/multimedia\/img\/component_corsair_k60.jpg",
+        "code": "component",
+        "stock": 99
+    },
+    {
+        "id": 19,
+        "title": "Audífonos Gamer SteelSeries Arctis Prime, Over-Ear, Compatible con PC y Consolas, Negro",
+        "description": "Ganar lo es todo\nDesarrollado conjuntamente con los principales jugadores de deportes electrónicos competitivos\ndel mundo, cada aspecto del Arctis Prime fue diseñado meticulosamente con un solo objetivo en\nmente: la victoria.",
+        "price": 39990,
+        "thumbnail": "\/multimedia\/img\/component_audifonos_gamer_steel_series_arctis_prime.jpg",
+        "code": "component",
+        "stock": 99
+    },
+    {
+        "id": 20,
+        "title": "Mouse Gamer Logitech G Pro, Sensor HERO 16K para eSports, 6 botones programables",
+        "description": "HERO 25K sensor\nNuestro sensor de juegos más preciso cuenta con precisión y\narquitectura de última generación y nuestro procesamiento de\nvelocidad de cuadros más rápido hasta la fecha.",
+        "price": 16990,
+        "thumbnail": "\/multimedia\/img\/component_mouse_gamer_logitech_g_pro.png",
+        "code": "component",
+        "stock": 99
+    },
+    {
+        "id": 21,
+        "title": "Teclado Gamer Redragon Kumara K552, Mecánico, White, Iluminación Rainbow, Switch Red, Español",
+        "description": "UN TKL MUY FUERTE\nUn best-seller aclamado, y con razón. El Kumara\nes un teclado mecánico TKL (sin pad numérico);\ncompacto, pero ampliamente funcional. Y fuerte\n—muy fuerte—, gracias a que su estructura está\nreforzada con acero. Es virtualmente irrompible\ny tiene una durabilidad extraordinaria.\nTodos sus componentes están diseñados para\nsoportar las exigencias del juego competitivo\nde alta intensidad. Está preparado para resistir,\nademás, derrames y salpicaduras, gracias a su\nsistema de drenando y sus switches tipo box.",
+        "price": 33590,
+        "thumbnail": "\/multimedia\/img\/component_kumara_k552.jpg",
+        "code": "component",
+        "stock": 99
+    },
+    {
+        "id": 22,
+        "title": "Teclado Mecánico Redragon Diti K585, Para una mano, Black",
+        "description": "Mejor engranaje para Pro Gamer. El teclado K585 se deshace de esas teclas adicionales y mantiene las teclas más útiles en tamaño portátil para las que jugar para ganar. Todas las teclas de acción del teclado en un solo lugar, no hay necesidad de preocuparse por las teclas que no están pulsadas para perder el juego. El clic táctil nítido de un interruptor azul mecánico te permite dominar el ritmo del campo de batalla y convertirte en el MVP.\nJuega para ganar. Con 7 teclas macro programables (G1-G5, T, ~), se pueden encuadrar múltiples comandos y activarlos al instante, lo que crea un potente sistema de combate que se adapta a ti adecuadamente. Fácil de jugar el juego en el complejo y las habilidades originales, para lograr el verdadero sentido de la rápida e inteligente fundación de hechizos, una mano puede controlar el juego.\nIlumina a tu manera. Al pulsar las teclas FN + Space, 5 modos RGB retroiluminados son seleccionables con 16,8 millones de colores. Los gloriosos y sorprendentes efectos de iluminación permiten que la luz de la victoria haga estragos en la oscuridad. Los 4 modos retroiluminados predeterminados se pueden cambiar con las teclas M (M1-M4) con facilidad. Cada tecla M está equipada con 7 teclas macro (G1-G5, T, ~), 28 ajustes macro en total.\nSin complicaciones, sin errores. Durante la intensa reproducción, el teclado puede grabar y responder con precisión a cada comando pulsando bajo la protección de la función de tecla completa de arranque. Usted es el que debe ser el juego del juego, con la entrada exacta sin importar la rapidez con la que realmente no deja errores.\nTenga cuidado contigo. Diseño ergonómico con sección de reposamuñecas desmontable que elimina la fatiga después de horas de juego. Conectado por imanes, la sección de reposamuñecas ofrece un gran soporte para hacer el uso más cómodo. Humanizado diseñado con la llave de mapa única en la esquina superior derecha cuidará de tu pierna y te mostrará el camino a la victoria en el juego.",
+        "price": 30990,
+        "thumbnail": "\/multimedia\/img\/component_diti_k585.png",
+        "code": "component",
+        "stock": 99
+    }
+]

@@ -1,0 +1,1 @@
+folder en el que se suben las imagenes
