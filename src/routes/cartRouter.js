@@ -38,34 +38,91 @@ cartsRouter.post('/', async (req, res) => {
 cartsRouter.get('/:cid', async (req, res) => {
     try {
         const cid = parseInt(req.params.cid)
-        if( cid==0){
-            console.log("todos")
-            const carts = await cm.readFile()
-            return res.status(200).send(carts);
-        }
+        // if( cid==0){
+        //     console.log("todos")
+        //     const carts = await cm.readFile()
+        //     return res.status(200).send(carts);
+        // }
         const cart = await cm.getCartById(cid)
         if(!cart){
             return res.status(404).send(`El carrito no se encuentra`);
         }
-        const productList = []
-        
-        if(cart.products.length === 0){
-            console.log("no hay productos")
-            return res.status(200).send(productList) //no hay productos
-        }
-
-        for(const productItem of cart.products){
-            const {product:idProduct, quantity} = productItem
-            let productData = await pm.getProductById(idProduct)
-                console.log("productData",{productData})
-            productList.push({...productData, quantity})
-        }
-        
-        res.status(200).send(productList)
+                
+        res.status(200).send(cart.products)
 
     } catch (error) {
         console.error(error);
         res.status(500).send("Error al obtener el carrito");
+    }
+})
+/**
+ * La ruta DELETE api/carts/:cid/products/:pid deberá eliminar del carrito el producto seleccionado.
+ */
+cartsRouter.delete('/:cid/products/:pid', async (req, res) => {
+    try {
+        const cid = parseInt(req.params.cid)
+        const pid = parseInt(req.params.pid)
+        //TODO validar que sean numeros
+        const r = await cm.deleteProductFromCart(cid, pid)
+        if(!r){
+            return res.status(404).send(`El carrito no se encuentra`);
+        }
+        res.status(200).send(r)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al intetando borrar el producto");
+    }
+})
+/**
+ * La ruta PUT api/carts/:cid deberá actualizar el carrito con un arreglo de productos con el formato especificado arriba.
+ */
+cartsRouter.put('/:cid', async (req, res) => {
+    try {
+        const cid = parseInt(req.params.cid)
+        const { products } = req.body
+        const r = await cm.updateCart(cid, products)
+        if(!r){
+            return res.status(404).send(`El carrito no se encuentra`);
+        }
+        res.status(200).send(r)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al actualizar el carrito");
+    }
+})
+
+/**
+ * La ruta PUT api/carts/:cid/products/:pid deberá poder actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
+ */
+cartsRouter.put('/:cid/products/:pid', async (req, res) => {
+    try {
+        const cid = parseInt(req.params.cid)
+        const pid = parseInt(req.params.pid)
+        const { quantity } = req.body
+        const {ok, quantity:quantityAsignada} = await cm.addProductToCart(cid, pid, quantity, false)
+        if(ok){
+            return res.status(404).send(`El carrito no se encuentra`);
+        }
+        res.status(200).send(r)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al actualizar el carrito");
+    }
+})
+/**
+ * La ruta DELETE api/carts/:cid deberá eliminar todos los productos del carrito 
+ */
+cartsRouter.delete('/:cid', async (req, res) => {
+    try {
+        const cid = parseInt(req.params.cid)
+        const r = await cm.deleteAllProductsFromCart(cid)
+        if(!r){
+            return res.status(404).send(`El carrito no se encuentra`);
+        }
+        res.status(200).send(r)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al borrar el carrito");
     }
 })
 /**
@@ -91,21 +148,27 @@ cartsRouter.post('/:cid/product/:pid', async (req, res) => {
             return res.status(404).send(`El carrito no se encuentra`);
         }
         
-        const cantidadAsignada = await cm.addProductToCart(cid, pid)
-        res.status(200).send(`cantidadAsignada: ${cantidadAsignada}`)
+        const {ok, quantity} = await cm.addProductToCart(cid, pid, 1, true)
+
+        if(ok){
+            res.status(200).send(`cantidadAsignada: ${quantity}`)
+        }else{
+            res.status(404).send(`El carrito no se encuentra`);
+        }
+
     } catch (error) {
         console.error(error);
         res.status(500).send("Error al agregar el producto");
     }
 })
-cartsRouter.get('/list', async (req, res) => {
-    try {
-        const r = await cm.readFile()
+// cartsRouter.get('/list', async (req, res) => {
+//     try {
+//         const r = await cm.readFile()
         
-        res.status(200).send(r)
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("No se pudo leer el archivo de carritos");
-    }
-})
+//         res.status(200).send(r)
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send("No se pudo leer el archivo de carritos");
+//     }
+// })
 export default cartsRouter

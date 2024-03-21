@@ -21,6 +21,7 @@ import upload         from './config/multer.js'
 import { Server }     from 'socket.io'
 import {engine}       from 'express-handlebars'
 import {__dirname,__public}    from './path.js'
+import mongoose from 'mongoose'
 
 const app  = express()
 const port = 8080
@@ -74,6 +75,10 @@ const server = app.listen(port, () => {
 })
 
 const io = new Server(server)
+
+mongoose.connect('mongodb+srv://admin:.1.2.3.4.5.6.@cluster0.xinylg0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    .then((mensaje) => console.log('Base de datos conectada: ', mensaje))
+    .catch((e) => console.log('Error al conectar a la base de datos:',e))
 
 /*************************************************************************************************** */
 /*************************************************************************************************** */

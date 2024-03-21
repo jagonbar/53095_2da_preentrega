@@ -85,7 +85,7 @@ export default class ProductManager {
         
         const product = await productModel.findOne({_id: id})
 
-        if (!product) { console.log("Not found1"); return false; }
+        if (!product) { console.log("No encontrado1"); return false; }
         
                 
         return product
@@ -95,7 +95,7 @@ export default class ProductManager {
     async updateProduct(id, title, description, price, thumbnail, code, stock, status, category) {
         const product = await this.getProductById(id)
         if (!product) {
-            console.log("Not found");
+            console.log("No encontrado");
             return false;
         }
         if (title) {
@@ -130,7 +130,7 @@ export default class ProductManager {
         
         const product = await this.getProductById(id)
         if (!product) {
-            console.log("Not found");
+            console.log("No encontrado");
             return false;
         }
         
