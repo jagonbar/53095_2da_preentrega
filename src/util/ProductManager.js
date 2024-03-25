@@ -59,7 +59,7 @@ export default class ProductManager {
     }
     async getProducts(query, page, limit, sortOrder) {
         
-        const countElementos = await YourModel.countDocuments(query);
+        const countElementos = await productModel.countDocuments(query);
         
         const offset = (page - 1) * limit
 
