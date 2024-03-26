@@ -19,39 +19,56 @@ productsRouter.get('/', async (req, res) => {
             , limit
             , sort
             , query)=>{
-        url += `?limit=${limit}&sort=${sort}&query=${query}`
-        const hasPrevPage = (page>1)
-        const hasNextPage = (page<totalPages)
-        
-        const retorno= {
-            status      //success/error
-            ,payload    // Resultado de los productos solicitados
-            ,totalPages // Total de páginas
-            ,prevPage   :hasPrevPage?page-1:null // Página anterior
-            ,nextPage   :hasNextPage?page+1:null // Página siguiente
-            ,page        // Página actual
-            ,hasPrevPage // Indicador para saber si la página previa existe
-            ,hasNextPage // Indicador para saber si la página siguiente existe.
-            ,prevLink   :hasPrevPage ?`${url}&page=${page-1}`:null // Link directo a la página previa (null si hasPrevPage=false)
-            ,nextLink   :hasNextPage ?`${url}&page=${page+1}`:null // Link directo a la página siguiente (null si hasNextPage=false)
-        }
-        console.log({retorno})
-        return retorno        
-    }
+                        url += `?limit=${limit}`
+                        if(sort!==undefined){
+                            url += `&sort=${sort}`
+                        }
+
+                        const hasPrevPage = (page>1)
+                        const hasNextPage = (page<totalPages)
+                        
+                        const retorno= {
+                            status      //success/error
+                            ,payload:payload    // Resultado de los productos solicitados
+                            ,totalPages // Total de páginas
+                            ,prevPage   :hasPrevPage?page-1:null // Página anterior
+                            ,nextPage   :hasNextPage?page+1:null // Página siguiente
+                            ,page        // Página actual
+                            ,hasPrevPage // Indicador para saber si la página previa existe
+                            ,hasNextPage // Indicador para saber si la página siguiente existe.
+                            ,prevLink   :hasPrevPage ?`${url}&page=${page-1}`:null // Link directo a la página previa (null si hasPrevPage=false)
+                            ,nextLink   :hasNextPage ?`${url}&page=${page+1}`:null // Link directo a la página siguiente (null si hasNextPage=false)
+                        }
+                        console.log({retorno})
+                        return retorno        
+                    }
+
+    // const url = `${req.protocol}://${req.get('host')}/${req.url}`;
+    const url = `${req.protocol}://${req.get('host')}/api/products/`;
+    
+    console.log("import.meta.url:",import.meta.url)
+    console.log("req.body.query:",req.body.query)
+    
+    const query   = req.body.query  !==undefined? JSON.parse(req.body.query) : {}
+    const sort    = req.query.sort
+    let   limit   = req.query.limit !==undefined? parseInt(req.query.limit) : 10  
+    let   page    = req.query.page  !==undefined? parseInt(req.query.page)  : 1
 
     try {
-        const url = `${req.protocol}://${req.get('host')}/${req.url}`;
-        
-        const limit   = req.query.limit ?? 10  
-        const page    = req.query.page  ?? 1
-        const sort    = req.query.sort  ?? 'asc'
-        const query   = req.query.query ?? ''
 
-        let {
-            countElementos,
+        let countElementos,
             totalPages,
             payload
-        } = await pm.getProducts(query, page, limit, sort);
+        
+        ({
+            countElementos,
+            totalPages,
+            productos: payload,
+            limit,
+            page
+        } = await pm.getProducts(query, page, limit, sort));
+
+
                 
         res.status(200).send(
             retornarPayload(   

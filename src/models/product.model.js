@@ -4,14 +4,14 @@ const productCollection = 'product'
 
 const productSchema = new Schema({
     // id          :0
-     title      :String
+    item        :Number
+    ,title      :String
     ,description:String
     ,price      :Number
-    ,thumbnail  :String
-    // ,code       :0
+    ,thumbnail  :String    
+    ,category   :String
     ,stock      :Number
     ,status     :Boolean
-    ,category   :String
 })
 const productModel = model(productCollection, productSchema)
 

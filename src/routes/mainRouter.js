@@ -51,32 +51,31 @@ mainRouter.get('/realtimeproducts', async (req, res) => {
 mainRouter.get('/products', async (req, res) => {
     let response, hayProductos
 
+    const query   = req.body.query!==undefined ? JSON.parse(req.body.query) : {}
+    const limit   = req.query.limit ?? 10  
+    const page    = req.query.page  ?? 1
+    const sort    = req.query.sort
+
     try {
         
-        response = await pm.getProducts();
-        
-        if (req.query.limit) {
-            const limit = req.query.limit;
-            if (!Validador.validarNumero(limit)) return res.status(400).send("El limite debe ser un numero");
-            if (!Validador.validarNumero(limit, 1)) return res.status(400).send("El limite debe partir desde 1");
-            if (!Validador.validarNumeroEntero(limit)) return res.status(400).send("El limite debe ser número entero");
+        let {countElementos, totalPages, elementos} = await pm.getProducts(query, page, limit, sort);
 
-            response = response.slice(0, limit);
-        }
-        hayProductos = (response.length>0)
-        // res.status(200).send(response);
+        console.log("response getProducts:",{response})
+        
+        hayProductos = (countElementos>0)
+        
+        res.render('products', {
+            // css: 'main.css',
+            // js: 'main.js',
+            hayProductos:hayProductos,
+            products: elementos,    
+        })
+        
     } catch (error) {
         console.error(error);
-        // res.status(500).send("error_al_listar_productos");
+        res.status(500).send("error_al_listar_productos");
     }
-    res.render('products', {
-        // css: 'main.css',
-        // js: 'main.js',
-        hayProductos:hayProductos,
-        products:response,
-
-    })
-
+    
 })
 
 

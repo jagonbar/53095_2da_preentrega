@@ -59,25 +59,65 @@ export default class ProductManager {
     }
     async getProducts(query, page, limit, sortOrder) {
         
+        query = query ?? {}
+        page  = page  ?? 1
+        limit = limit ?? 10
+
+        console.log("query:"    ,{query    })
+        console.log("page:"     ,{page     })
+        console.log("limit:"    ,{limit    })
+        console.log("sortOrder:",{sortOrder})
+
+
         const countElementos = await productModel.countDocuments(query);
         
+        if(countElementos==0){
+            return {
+                countElementos,
+                totalPages:0,
+                elementos:[]
+            }
+        }
+
+
+
         const offset = (page - 1) * limit
 
-        const totalPages = countElementos>0 ? Math.ceil(countElementos / limit) : 0
+        const totalPages = Math.ceil(countElementos / limit)
                            console.log("countElementos:", countElementos);
+        
+        limit= limit>countElementos?countElementos:limit
+        page = page > totalPages ? totalPages : page
 
-        const elementos = (countElementos>0)? 
-            await productModel
+        let orden = {}
+        if (sortOrder !== undefined) {
+            
+            sortOrder = (sortOrder == 'asc')? 1: (sortOrder == 'desc')?-1:0
+
+            if(sortOrder!==0){
+                orden = { "price": sortOrder };
+            }
+        }
+
+        console.log("query2:"    ,{query    })
+        console.log("page2:"     ,{page     })
+        console.log("limit2:"    ,{limit    })
+        console.log("orden:",{orden})
+
+        let productos = await productModel
                 .find(query)
-                .sort({ title: sortOrder })
+                .sort(orden)
                 .skip(offset)
                 .limit(limit)
-            : []
-
+                .lean()
+            
+        // console.log("productos:",{productos})
         return {
             countElementos,
             totalPages,
-            elementos
+            productos:productos,
+            limit,
+            page
         }
     }
     async getProductById(id) {
